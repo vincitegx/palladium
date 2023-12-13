@@ -29,4 +29,12 @@ public class UserController {
         List<UserDto> userDto = users.stream().map(this.userMapper).collect(Collectors.toList());
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
+
+
+@PostMapping
+public ResponseEntity<Users> saveUser(@Valid @RequestBody UserDto user){
+
+Users user = user service.save(user);
+return new ResponseEntity(user, HttpStatus.CREATED);
+}
 }
