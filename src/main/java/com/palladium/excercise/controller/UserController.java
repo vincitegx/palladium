@@ -1,17 +1,14 @@
 package com.palladium.excercise.controller;
 
+import com.palladium.excercise.domain.Users;
 import com.palladium.excercise.dto.UserDto;
 import com.palladium.excercise.mapper.UserMapper;
 import com.palladium.excercise.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,9 +29,9 @@ public class UserController {
 
 
 @PostMapping
-public ResponseEntity<Users> saveUser(@Valid @RequestBody UserDto user){
+public ResponseEntity<Users> saveUser(@Validated @RequestBody UserDto user){
 
-Users user = user service.save(user);
-return new ResponseEntity(user, HttpStatus.CREATED);
+Users users = userService.save(user);
+return new ResponseEntity(users, HttpStatus.CREATED);
 }
 }

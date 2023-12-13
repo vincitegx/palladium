@@ -1,5 +1,6 @@
 package com.palladium.excercise.mapper;
 
+import com.palladium.excercise.domain.Users;
 import com.palladium.excercise.dto.UserDto;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,11 @@ public class UserMapper implements Function<Users, UserDto> {
     @Override
     public UserDto apply(Users user) {
         return UserDto.builder()
-                .username(user.getStageName())
+                .username(user.getUsername())
                 .email(user.getEmail())
-                .phoneNumber(user.getRole())
-                .dateCreated()
-                .status()
+                .phoneNumber(user.getUsername())
+                .dateCreated(user.getDateCreated())
+                .status(user.getStatus())
                 .build();
     }
 }
